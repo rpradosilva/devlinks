@@ -3,25 +3,27 @@
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
 :root {
-  --background: rgba(255, 255, 255, 0.1);
-  --border: #eee;
+  --surface: rgba(255, 255, 255, 0.1);
+  --stroke-color: rgba(255, 255, 255, 0.5);
   --gradient-1: rgba(18, 19, 21, 1);
   --gradient-2: rgba(32, 43, 62, 1);
   --gradient-3: rgba(89, 26, 85, 1);
   --gradient-4: rgba(91, 39, 102, 1);
   --gradient-5: rgba(95, 64, 135, 1);
-  --text: #eee;
+  --text-color: white;
+  --text-md: 500 16px/24px Inter, sans-serif;
+  --text-sm: 500 14px/24px Inter, sans-serif;
 }
 
 .light {
-  --background: rgba(0, 0, 0, 0.1);
-  --border: #666;
+  --surface: rgba(0, 0, 0, 0.05);
+  --stroke-color: rgba(0, 0, 0, 0.5);
   --gradient-1: rgba(253, 253, 253, 1);
   --gradient-2: rgba(236, 175, 232, 1);
   --gradient-3: rgba(202, 184, 236, 1);
   --gradient-4: rgba(211, 219, 246, 1);
   --gradient-5: rgba(211, 219, 246, 1);
-  --text: #333;
+  --text-color: black;
 }
 
 body {
@@ -37,11 +39,9 @@ body {
     var(--gradient-5) 85%
   );
   background-size: 200% 200%;
-  color: var(--text);
+  color: var(--text-color);
   display: flex;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  line-height: 24px;
+  font: var(--text-sm);
   height: 100vh;
   width: 100vw;
 }
@@ -59,7 +59,10 @@ body {
 }
 
 a {
-  color: var(--text);
+  color: var(--text-color);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   display: block;
   text-decoration: none;
 }
@@ -89,16 +92,17 @@ main {
 }
 
 .user img {
-  border: 2px solid var(--border);
+  border: 2px solid var(--stroke-color);
   border-radius: 100%;
   width: 112px;
   height: 112px;
 }
 
 .switch {
-  background: var(--background);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--stroke-color);
   border-radius: 32px;
+  cursor: pointer;
   display: block;
   height: 24px;
   margin: 4px 0;
@@ -113,6 +117,7 @@ main {
   display: block;
   font-size: 16px;
   left: -1px;
+  right: -1px;
   bottom: -5px;
   position: absolute;
   padding: 8px;
@@ -127,16 +132,21 @@ main {
 }
 
 .user__links li {
-  background: var(--background);
-  border: 1px solid var(--border);
+  background: var(--surface);
+  border: 1px solid var(--stroke-color);
   border-radius: 8px;
   width: 100%;
+  transition: border 250ms;
 }
 
 .user__links li > a {
-  font-weight: 500;
+  font: var(--text-md);
   text-align: center;
   padding: 16px 24px;
+}
+
+.user__links li:hover {
+  border: 1px solid var(--text-color);
 }
 
 .user__links-social {
@@ -150,8 +160,17 @@ main {
 
 .user__links-social ion-icon {
   font-size: 24px;
-  padding: 8px;
+  padding: 16px;
   display: block;
+}
+
+.user__links-social li {
+  border-radius: 50%;
+  transition: background 250ms;
+}
+
+.user__links-social li:hover {
+  background: var(--surface);
 }
 
 footer {
