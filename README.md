@@ -20,7 +20,10 @@ The project is an aggregator of links to my social networks to complete the Disc
 
 ## Features
 
-- [x] ....
+- [x] Responsive
+- [x] Light / Dark mode
+- [x] Animation on Background
+- [x] BEM CSS
 
 ## License
 
